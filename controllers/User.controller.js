@@ -1,10 +1,15 @@
 const User = require('../model/User.model')
 const bcrypt = require("bcryptjs");
+const jwt = require('jsonwebtoken')
+const dotenv = require('dotenv')
+
+
+dotenv.config();
+
 
 exports.UserRegister = async (req, res) => {
     try {
         const { fullName, username, email, password, bio } = req.body;
-
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
@@ -31,11 +36,18 @@ exports.UserLogin = async (req, res) => {
             req.body.password,
             user.password
         );
+        const token = jwt.sign({
+            email: req.body.email,
+            password: req.body.password,
+            admin: user.isAdmin,
+            exp: Math.floor(Date.now()/1000) + 60
+
+        }, process.env.JWTKEY)
 
         if (!validPassword) {
             res.status(403).send("Invalid password!");
         } else {
-            res.status(200).json(user);
+            res.status(200).json(token);
         }
     } catch (err) {
         res.status(500).json(err);
