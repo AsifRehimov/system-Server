@@ -40,7 +40,8 @@ exports.UserLogin = async (req, res) => {
             email: req.body.email,
             password: req.body.password,
             admin: user.isAdmin,
-            exp: Math.floor(Date.now()/1000) + 60
+            id: user._id + "sss",
+            exp: Math.floor(Date.now()/1000) + 3600
 
         }, process.env.JWTKEY)
 
