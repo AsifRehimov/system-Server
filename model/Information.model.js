@@ -2,32 +2,21 @@ const mongoose = require("mongoose");
 
 const InformationSchema = new mongoose.Schema(
   {
-    fullName: {
-      type: binData,
-      default: "",
-    },
-    username: {
-      type: String,
-      require: true,
-      unique: true,
-    },
-    email: {
-      type: String,
-      require: true,
-      unique: true,
-    },
-    password: {
+    fileType: {
       type: String,
       require: true,
     },
-    bio: {
-      type: String,
-      max: 100,
-      default: "",
+    file: {
+      type: Buffer,
+      require: true,
     },
-    isAdmin: {
-      type: Boolean,
-      default: false,
+    text: {
+      type: String,
+      require: true,
+    },
+    author: {
+      type: String,
+      require: true,
     },
   },
   { timestamps: true }
