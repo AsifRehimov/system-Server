@@ -24,7 +24,7 @@ exports.UserRegister = async (req, res) => {
         const user = await newUser.save();
         res.status(200).json(user);
     } catch (err) {
-        res.status(503).json(err);
+        res.status(500).json(err);
     }
 }
 exports.UserLogin = async (req, res) => {
@@ -40,7 +40,7 @@ exports.UserLogin = async (req, res) => {
             email: req.body.email,
             password: req.body.password,
             admin: user.isAdmin,
-            id: user._id + "sss",
+            id: user._id,
             exp: Math.floor(Date.now()/1000) + 3600
 
         }, process.env.JWTKEY)

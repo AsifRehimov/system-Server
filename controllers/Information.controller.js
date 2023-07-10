@@ -1,29 +1,24 @@
-var multer = require('multer');
+const Information = require("../model/Information.model")
 
+exports.UploadFile = async (req, res) => {
+    // res.send(req.files)
+    try {
+        console.log(req.files);
+        console.log(req.files[0].path);
+        const newInformation = new Information({
+            path:req.files[0].path, 
+            originalname:req.files[0].originalname, 
+            text:req.body.text, 
+            author:req.body.author,
+        })
+        const information = await newInformation.save()
+        res.status(200).json(information)
+    } catch (error) {
+        res.status(500).json(error);
+        console.log(error);
+    }
+}
 
-
-const storage = multer.diskStorage({
-	destination: (req, file, cb) => {
-		cb(null, "uploads/");
-	},
-	filename: (req, file, cb) => {
-		cb(null, file.originalname);
-	}
-});
-
-const upload=multer({
-    
-    fileFilter: (req, file, cb) => {
-        if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
-            cb(null, true);
-        } else {
-            cb(null, false);
-            return cb(new Error('Only .png, .jpg and .jpeg format allowed!'));
-        }
-    },
-    storage:storage,
-})
-
-exports.UploadFile = (req, res) =>{
-
+exports.openFile = async (req, res) =>{
+    Information.find().then(data => res.status(200).json(data)).catch(err => res.status(400).json(err))
 }

@@ -18,6 +18,7 @@ const connect = async () =>{
 }
 app.use(express.json());
 app.use('/', useRooter)
+app.use(express.static(__dirname + "/public"))
 
 app.listen(port, ()=>{
     connect();

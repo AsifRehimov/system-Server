@@ -2,13 +2,14 @@ const mongoose = require("mongoose");
 
 const InformationSchema = new mongoose.Schema(
   {
-    fileType: {
+    path: {
       type: String,
-      require: true,
+      required: true,
+      trim: true
     },
-    file: {
-      type: Buffer,
-      require: true,
+    originalname: {
+      type: String,
+      required: true
     },
     text: {
       type: String,
