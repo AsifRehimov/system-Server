@@ -4,12 +4,13 @@ exports.UploadFile = async (req, res) => {
     // res.send(req.files)
     try {
         console.log(req.files);
-        console.log(req.files[0].path);
+        console.log(req.files[0]);
         const newInformation = new Information({
             path:req.files[0].path, 
             originalname:req.files[0].originalname, 
             text:req.body.text, 
             author:req.body.author,
+            type:req.files[0].mimetype
         })
         const information = await newInformation.save()
         res.status(200).json(information)

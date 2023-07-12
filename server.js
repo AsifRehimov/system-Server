@@ -3,6 +3,7 @@ const app = express()
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const useRooter = require('./root/rooter')
+var fileUpload=require('express-fileupload');
 
 const port = 1992;
 
@@ -19,6 +20,8 @@ const connect = async () =>{
 app.use(express.json());
 app.use('/', useRooter)
 app.use(express.static(__dirname + "/public"))
+app.use(fileUpload({ createParentPath: true }));
+
 
 app.listen(port, ()=>{
     connect();

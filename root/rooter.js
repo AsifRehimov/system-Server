@@ -4,6 +4,7 @@ const router = express.Router();
 const jwttoken = require('../jwtkey/jwt');
 var multer = require('multer');
 const { UploadFile, openFile } = require('../controllers/Information.controller');
+const { outputFile } = require('../controllers/Image.controller');
 
 
 
@@ -41,6 +42,7 @@ const upload=multer({
    })
 router.post('/add_info', upload.any(), UploadFile)
 router.get('/show_data', openFile)
+router.get('/file/:filename', outputFile)
  
 
 module.exports = router  
