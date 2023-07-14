@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const LoginScreen = () => {
 
-    const naviagte = useNavigate()
+    const navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -16,13 +16,13 @@ const LoginScreen = () => {
             }).then(res => {
                 return (
                     res.status === 200 ?
-                        (naviagte('/'),
+                        (navigate('/'),
                             localStorage.setItem("item", res.data))
                         : alert("ad soyad sehvdir")
                 )
             }).catch(err => alert(err))
     }
-  if (localStorage.item !== undefined) return <LoginScreen />;
+//   if (localStorage.item !== undefined) return navigate('/');
 
 
     return (

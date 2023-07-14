@@ -26,8 +26,8 @@ router.post("/login", UserLogin)
 router.post("/registr", UserRegister)
 router.post('/add_info', jwttoken, upload.any(), UploadFile)
 router.get('/show_data', jwttoken, openFile)
-router.get('/file/:filename', jwttoken, outputFile)
-router.delete('/file/:filename', jwttoken, removeFile)
+router.get('/file/:filename',  outputFile)
+router.delete('/file/:filename', removeFile)
 
 
 module.exports = router  
