@@ -30,11 +30,14 @@ exports.deleteFile = async (req, res) => {
     try {
         const files = await Information.find({ _id: req.params.id })
         await Information.deleteOne({ _id: req.params.id });
-        const filename = files.originalname;
+        const filename = files[0].originalname;
         const filePath = path.join(__dirname, '../public/uploads', filename);
 
-        fs.unlink(filePath, (err, data) => {
+        fs.unlinkSync(filePath, (err, data) => {
             res.send(data);
+            if (err) {
+                res.send(err)
+            }
         });
 
         res.status(200).json({

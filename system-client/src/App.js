@@ -1,6 +1,7 @@
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import HomePage from './home/HomePage';
 import LoginScreen from './login/Login';
+import MainPage from './mainpage/MainPage';
 
 
 function App() {
@@ -13,7 +14,8 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<MainPage />} />
+        <Route path="/api/homepage" element={<HomePage />} />
         <Route path="/login" element={<LoginScreen />} />
 
       </Routes>

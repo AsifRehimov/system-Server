@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const jwttoken = require('../jwtkey/jwt');
 var multer = require('multer');
-const { UploadFile, openFile } = require('../controllers/Information.controller');
+const { UploadFile, openFile, deleteFile } = require('../controllers/Information.controller');
 const { outputFile, removeFile } = require('../controllers/Image.controller');
 
 
@@ -26,8 +26,8 @@ router.post("/login", UserLogin)
 router.post("/registr", UserRegister)
 router.post('/add_info', jwttoken, upload.any(), UploadFile)
 router.get('/show_data', jwttoken, openFile)
-router.get('/file/:filename',  outputFile)
-router.delete('/file/:filename', removeFile)
+router.get('/file/:filename', outputFile)
+router.delete('/deletefile/:id', jwttoken, deleteFile)
 
 
 module.exports = router  
