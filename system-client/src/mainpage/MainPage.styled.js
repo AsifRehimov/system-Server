@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 
 
-export const MainPage = styled.div`
+export const MainPageDiv = styled.div`
 
     margin:0;
     padding:0; 

@@ -1,6 +1,8 @@
 import axios from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
+import { Input } from "@nextui-org/react";
+
 
 const LoginScreen = () => {
 
@@ -22,33 +24,21 @@ const LoginScreen = () => {
                 )
             }).catch(err => alert(err))
     }
-//   if (localStorage.item !== undefined) return navigate('/');
+    //   if (localStorage.item !== undefined) return navigate('/');
 
 
     return (
         <form >
             <div className='form-group'>
-                <label htmlFor='email'>Email</label>
-                <input
-                    type='email'
-                    className='form-input'
-                    onChange={(e) => setEmail(e.target.value)}
-                    value={email}
-                />
+                <Input labelPlaceholder="Email" />
             </div>
             <div className='form-group'>
-                <label htmlFor='password'>Password</label>
-                <input
-                    type='password'
-                    className='form-input'
-                    onChange={(e) => setPassword(e.target.value)}
-                    value={password}
-                />
+                <Input.Password labelPlaceholder="Password" initialValue={password} onChange={(e) => setPassword(e.target.value)} />
             </div>
             <p onClick={handleSubmit} className='button' >
                 Login
             </p>
         </form>
     )
-}
+} 
 export default LoginScreen

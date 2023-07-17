@@ -1,13 +1,13 @@
-
+import { MainPageDiv } from "./MainPage.styled";
 
 
 
 
 function MainPage() {
     return(
-        <MainPage>
+        <MainPageDiv>
             
-        </MainPage>
+        </MainPageDiv>
     )
 }
 
