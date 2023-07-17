@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 
 
 
-export const Login = styled.div`
+export const RegistrDiv = styled.div`
 
     margin: 0;
     padding: 0;
@@ -33,6 +33,7 @@ export const Login = styled.div`
         width: 250px;
         background-color: unset;
     }
+
     .inputButton{
         width: 250px;
         margin: 30px auto 30px auto;

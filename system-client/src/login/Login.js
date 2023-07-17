@@ -1,8 +1,10 @@
 import axios from "axios"
 import { useState } from "react"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Input } from "@nextui-org/react";
-
+import { Button } from "@nextui-org/react";
+import { Login } from "./Login.styled";
+import logo from "../photo/logo.png";
 
 const LoginScreen = () => {
 
@@ -28,17 +30,25 @@ const LoginScreen = () => {
 
 
     return (
-        <form >
-            <div className='form-group'>
-                <Input labelPlaceholder="Email" />
+        <Login>
+            <div className="logo_div">
+                <img src={logo} alt="logo" className="logo"/>
+                <p>Chemistry</p>
             </div>
-            <div className='form-group'>
-                <Input.Password labelPlaceholder="Password" initialValue={password} onChange={(e) => setPassword(e.target.value)} />
-            </div>
-            <p onClick={handleSubmit} className='button' >
-                Login
-            </p>
-        </form>
+            <form className="form">
+                <p className="form_title">Login</p>
+                <div className='form-group'>
+                    <Input className="input" labelPlaceholder="Email" onChange={(e) => setEmail(e.target.value)} />
+                </div>
+                <div className='form-group'>
+                    <Input.Password className="input" labelPlaceholder="Parol" initialValue={password} onChange={(e) => setPassword(e.target.value)} />
+                </div>
+                <Button className="inputButton" auto color="primary" rounded onClick={handleSubmit}>
+                    Daxil ol
+                </Button>
+                <p className="passTo">Hələdə hesabınız yoxdur? o zaman qeydiyyatdan keç {<Link className="link" to={"/registration"}> Qeydiyyatdan keç</Link>}</p>
+            </form>
+        </Login>
     )
-} 
+}
 export default LoginScreen
