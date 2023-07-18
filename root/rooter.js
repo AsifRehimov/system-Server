@@ -21,13 +21,11 @@ const upload = multer({
     storage: storage,
 })
 
-
 router.post("/login", UserLogin)
 router.post("/registr", UserRegister)
 router.post('/add_info', jwttoken, upload.any(), UploadFile)
 router.get('/show_data', jwttoken, openFile)
 router.get('/file/:filename', outputFile)
 router.delete('/deletefile/:id', jwttoken, deleteFile)
-
 
 module.exports = router  
