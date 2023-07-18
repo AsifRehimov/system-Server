@@ -1,14 +1,14 @@
 import axios from "axios"
 import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Input } from "@nextui-org/react";
 import { Button } from "@nextui-org/react";
 import { RegistrDiv } from "./Registr.styled";
 import logo from "../photo/logo.png";
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const MySwal = withReactContent(Swal)
+
 
 
 const Registr = () => {
@@ -19,48 +19,64 @@ const Registr = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [bio, setBio] = useState('')
-
     const handleSubmit = () => {
         if (fullName.length < 5) {
-            MySwal.fire({
-                position: 'top-end',
-                icon: 'error',
-                title: 'Ad və Soyadınız 5 xarakterdən az ola bilməz.',
-                showConfirmButton: false,
-                timer: 1500
-              })
+
+            toast.error('Ad və Soyadınız 5 xarakterdən az ola bilməz.', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
         } else if (userName.length < 5) {
-            MySwal.fire({
-                position: 'top-end',
-                icon: 'error',
-                title: 'İstifadəçi adınız 5 xarakterdən az ola bilməz.',
-                showConfirmButton: false,
-                timer: 1500
-              })
+            toast.error('İstifadəçi adınız 5 xarakterdən az ola bilməz.', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
         } else if (email.length < 5) {
-            MySwal.fire({
-                position: 'top-end',
-                icon: 'error',
-                title: 'Emailiniz 5 xarakterdən az ola bilməz.',
-                showConfirmButton: false,
-                timer: 1500
-              })
+            toast.error('Emailiniz 5 xarakterdən az ola bilməz.', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
         } else if (password.length < 7) {
-            MySwal.fire({
-                position: 'top-end',
-                icon: 'error',
-                title: 'Şifrəniz minimum 8 xarakter olmalıdır.',
-                showConfirmButton: false,
-                timer: 1500
-              })
+            toast.error('Şifrəniz minimum 8 xarakter olmalıdır.', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+
         } else if (bio.length === 0) {
-            MySwal.fire({
-                position: 'top-end',
-                icon: 'error',
-                title: 'Zəhmət olmasa məşğuliyyət əlavə edin. Məsələn "məktəbli"',
-                showConfirmButton: false,
-                timer: 1500
-              })
+            toast.error('Zəhmət olmasa məşğuliyyət əlavə edin. Məsələn "məktəbli"', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
         } else {
             axios.post('/registr',
                 {
@@ -80,10 +96,11 @@ const Registr = () => {
         }
     }
     //   if (localStorage.item !== undefined) return navigate('/');
- 
+
 
     return (
         <RegistrDiv>
+            <ToastContainer />
             <div className="logo_div">
                 <img src={logo} alt="logo" className="logo" />
                 <p>Chemistry</p>
@@ -105,10 +122,10 @@ const Registr = () => {
                 <div className='form-group'>
                     <Input className="input" color="error" labelPlaceholder="Məşğuliyyət" onChange={(e) => setBio(e.target.value)} />
                 </div>
-                <Button className="inputButton" auto color="primary" rounded onClick={handleSubmit}>
+                <Button className="inputButton" auto color="primary" rounded onPress={handleSubmit}>
                     Daxil ol
                 </Button>
-                <p className="passTo">Hesabınəz var? O zaman yubanmadan daxil ol. {<Link className="link" to={"/login"}>Daxil ol</Link>}</p>
+                <p className="passTo">Hesabınız var? O zaman yubanmadan <a className="link" href="/login">Daxil ol</a></p>
             </form>
         </RegistrDiv>
     )
