@@ -123,7 +123,7 @@ const Registr = () => {
                     <Input className="input" color="error" labelPlaceholder="Məşğuliyyət" onChange={(e) => setBio(e.target.value)} />
                 </div>
                 <Button className="inputButton" auto color="primary" rounded onPress={handleSubmit}>
-                    Daxil ol
+                    Qeydiyyatdan keç
                 </Button>
                 <p className="passTo">Hesabınız var? O zaman yubanmadan <a className="link" href="/login">Daxil ol</a></p>
             </form>
