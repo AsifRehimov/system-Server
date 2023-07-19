@@ -25,6 +25,14 @@ export const MainPageDiv = styled.div`
         margin: 20px auto;
         width: fit-content;
     }
+    .contact{
+        display: -webkit-box;
+        text-decoration: none;
+        margin-top: 20px;
+    }
+    .icon{
+        margin-right: 20px;
+    }
     @media (max-width: 767px) {
     .div_main img{
       width: 100%;

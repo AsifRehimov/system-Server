@@ -3,7 +3,7 @@ import method from "../photo/method.jpg";
 import personal from "../photo/personal.jpg";
 import web from "../photo/web.jpg";
 import call from "../photo/call.png";
-import { BsFillTelephoneOutboundFill } from 'react-icons/bs';
+import { BsFillTelephoneOutboundFill, BsWhatsapp } from 'react-icons/bs';
 
 
 
@@ -50,7 +50,8 @@ function MainPage() {
                     <p>
                         Bu Sayt vasitəsil siz kimya vəsaitlərinə və videolarına baxa biləcəksiz. Siz noutbook, planşet, telefon və daha çox cihazla istər dərslərə qoşula biləcəksiz istərsədə resurslardan istifadə edə biləcəksiz. Və əgər bəyənərsəniz mənlə əlaqə yaradıb dərslərimə
                         qatıla bilərsiz. Əlaq üçün aşağıda whatsapp və əlaqə nömrəmi yerləşdirəcəm.
-                        <a src=""></a>
+                        <a href="tel:+994556616793" className="contact"><BsFillTelephoneOutboundFill className="icon"/> (055)-661-67-93</a>
+                        <a href="https://wa.me/994556616793" className="contact"><BsWhatsapp className="icon"/>Whatsappla Əlaqə</a>
                     </p>
                 </div>
             </div>
